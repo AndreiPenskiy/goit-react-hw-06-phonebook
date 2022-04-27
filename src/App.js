@@ -10,20 +10,12 @@ import { setFilter } from './redux/ToolkitSlice';
 export default function App() {
 
   const dispatch = useDispatch();
-  const contacts = useSelector(state => state.items);
   const filter = useSelector(state => state.filter);
 
 
   const handleChange = evt => {
     dispatch(setFilter(evt.currentTarget.value));
   };
-
-
-  
-    const normalizedFilter = filter.toLowerCase();
-    const visibleContacts = contacts.filter(contact => 
-     contact.name.toLowerCase().includes(normalizedFilter)
-    );
 
     return (
       
@@ -33,9 +25,7 @@ export default function App() {
 
         <h2>Contacts</h2>
         <Filter handleChange={handleChange} filter={filter} />
-        <ContactList
-          contacts={visibleContacts}
-        />
+        <ContactList />
       </div>
     );
 }
